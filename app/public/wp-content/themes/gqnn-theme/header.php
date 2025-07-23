@@ -4,19 +4,29 @@
     <?php wp_head(); ?>
 </head>
 <body class="p-[0] m-[0]">
-<div class="w-auto h-[5rem] flex bg-pink-500 pl-4">
+<div class="w-auto h-[5rem] flex justify-center bg-pink-500 pl-4 sticky">
     <?php 
-    $href = "#";
-    $name = "<img src='http://gqnn.local/wp-content/uploads/2025/07/home.png' alt='Home'>";
-    for ($i = 0; $i < 3; $i++){
+    $href = home_url();
+    $imgPath = home_url("/wp-content/themes/gqnn-theme/images/home.svg");
+    $name = "Home";
+    for ($i = 0; $i < 5; $i++){
         if ($i == 1){
-            $name = "News";
+            $name = "About";
+            $href = home_url("/about/");
         }
         if ($i == 2){
-            $name = "Forums";
+            $name = "News";
+            $href = home_url("/news/");
         }
-        echo '<button type="button" href="' . $href . '" class="w-[4rem] h-[4rem] text-white font-bold bg-purple-700 hover:bg-purple-900 border-purple-900 
-        border-6 rounded-full [1rem] mr-4 mt-2">' . $name . '</button>';
+        if ($i == 3){
+            $name = "Connect";
+            $href = home_url("/connect/");
+        }
+        if ($i == 4){
+            $name = "Shop";
+            $href = home_url("/shop/");
+        }
+        echo '<a class="w-auto h-[2rem] mr-[2rem] text-white hover:text-pink-200 font-extrabold text-2xl bg-pink-500 border-0 mt-5 no-underline font-sans" href="' . $href . '">' . $name . '</a>';
     }
     ?>
 </div>
